@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file(appSignFileName)
+            storePassword appSignPassWord
+            keyAlias appSignAilas
+            keyPassword appSignAilasPassWord
+        }
+    }
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        //主模块的混淆开关配置会直接影响到子模块，也就是说如果你的主模块开启的混淆，就算你的子模块关闭混淆开关，最终子模块还是会被混淆的。
+        //子模块混淆文件的指定是通过consumerProguardFiles这个属性来指定的，并不是proguardFiles 属性，无需配置其他的选项，只需要配置consumerProguardFiles属性即可。该属性表示在打包的时候会自动寻找该module下我们指定的混淆文件对代码进行混淆。
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api files('libs/wechat-sdk-android-with-mta-1.0.2.jar')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api project(path: ':YouLib')
+    //微信分享、登录、收藏、支付等功能需要的库以及文件
+//    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.21'
+}

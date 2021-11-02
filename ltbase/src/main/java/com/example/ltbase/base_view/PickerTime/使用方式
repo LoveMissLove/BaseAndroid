@@ -1,0 +1,8 @@
+ //
+       TimeSelector timeSelector=new TimeSelector(context, new TimeSelector.ResultHandler() {
+                           @Override
+                           public void handle(String time) {
+                               ToastUtils.showToast(time);
+                           }
+                       },"2021-01-01 00:00","2021-12-30 00:00");
+                       timeSelector.show();

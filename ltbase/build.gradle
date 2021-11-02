@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file(appSignFileName)
+            storePassword appSignPassWord
+            keyAlias appSignAilas
+            keyPassword appSignAilasPassWord
+        }
+    }
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //此步骤是为了确认RxHttp库引用的rxjava版本
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        //使用asXxx方法时必须，告知RxHttp你依赖的rxjava版本，可传入rxjava2、rxjava3
+                        rxhttp_rxjava: 'rxjava3',
+                ]
+            }
+        }
+    }
+    buildTypes {
+        //主模块的混淆开关配置会直接影响到子模块，也就是说如果你的主模块开启的混淆，就算你的子模块关闭混淆开关，最终子模块还是会被混淆的。
+        //子模块混淆文件的指定是通过consumerProguardFiles这个属性来指定的，并不是proguardFiles 属性，无需配置其他的选项，只需要配置consumerProguardFiles属性即可。该属性表示在打包的时候会自动寻找该module下我们指定的混淆文件对代码进行混淆。
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    //沉浸式状态栏
+    // 基础依赖包，必须要依赖
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    //图片加载框架
+    api 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //APP版本更新 https://github.com/xuexiangjys/XUpdate
+    api 'com.github.xuexiangjys:XUpdate:2.0.9'
+    //网络请求的实现一
+    implementation 'com.zhy:okhttputils:2.6.2'
+    //相册选取 https://github.com/LuckSiege/PictureSelector/blob/master/README_CN.md
+    api 'io.github.lucksiege:pictureselector:v2.7.3-rc07'
+    //内存泄露检测
+    debugApi 'com.squareup.leakcanary:leakcanary-android:2.4'
+    //动态权限请求框架,https://github.com/tbruyelle/RxPermissions
+    api 'com.github.tbruyelle:rxpermissions:0.12'
+    //图片压缩
+    api 'id.zelory:compressor:2.1.1'
+    //腾讯x5内核
+    api files('libs/tbs_sdk_44085.jar')
+    //从缩略视图到原视图的无缝过渡转变 https://github.com/Hitomis/transferee?t=202004091024
+    api 'com.github.Hitomis.transferee:Transferee:1.6.1'
+    //万能adapter
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'
+    //QMUI Android
+    api 'com.qmuiteam:qmui:2.0.1'
+    /***********************************************************************************************************************/
+    //https://github.com/liujingxing/rxhttp/wiki/%E5%85%B3%E9%97%AD%E8%AF%B7%E6%B1%82
+    api 'com.github.liujingxing.rxhttp:rxhttp:2.6.5'
+    api 'com.squareup.okhttp3:okhttp:4.9.1' //rxhttp v2.2.2版本起，需要手动依赖okhttp
+    annotationProcessor 'com.github.liujingxing.rxhttp:rxhttp-compiler:2.6.5' //生成RxHttp类，纯Java项目，请使用annotationProcessor代替kapt
+    api 'com.github.liujingxing.rxlife:rxlife-coroutine:2.1.0' //管理协程生命周期，页面销毁，关闭请求
+    //rxjava3
+    api 'io.reactivex.rxjava3:rxjava:3.0.6'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'com.github.liujingxing.rxlife:rxlife-rxjava3:2.1.0' //管理RxJava3生命周期，页面销毁，关闭请求
+    api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    /***********************************************************************************************************************/
+}

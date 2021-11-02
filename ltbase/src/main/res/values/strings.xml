@@ -1,0 +1,9 @@
+<resources>
+    <string name="demo_a_life_cycle_fragment_notice">test fragment lifecycle\n callId=%s\n slow process cc (3s) invoked\nClick button to destroy current fragment and replace a new one.</string>
+    <string name="network_error">当前无网络，请检查你的网络设置</string>
+    <string name="notify_no_network">网络连接不可用，请稍后重试！</string>
+    <string name="the_network_is_not_helpful_exception">网络不给力，请稍候重试！</string>
+    <string name="time_out_please_try_again_later">连接超时,请稍后再试</string>
+    <string name="the_requested_scope_is_invalid">请求范围不符合要求</string>
+    <string name="the_requested_address_is_abnormal">请求地址异常</string>
+</resources>

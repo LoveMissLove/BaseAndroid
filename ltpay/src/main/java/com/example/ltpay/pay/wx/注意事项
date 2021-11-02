@@ -1,0 +1,6 @@
+在app下的清单文件内需要使用代理Activity的方式解决WXPayEntryActivity调用
+代理方式
+<activity-alias
+            android:name="你的app包名.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.example.ltpay.pay.wx.WXPayActivity" />

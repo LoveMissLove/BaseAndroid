@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <View
+        android:id="@+id/status_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/base_colorPrimary" />
+    <androidx.appcompat.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/base_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="ResourceName">
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:paddingLeft="@dimen/dp_15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_left_text"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/base_black"
+                android:text="完成"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:src="@mipmap/ic_back" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            tools:text="标题"
+            android:gravity="center"
+            android:textColor="@color/base_black"
+            android:fontFamily="sans-serif-medium"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/dp_18"
+            android:layout_marginRight="@dimen/dp_60" />
+    </androidx.appcompat.widget.Toolbar>
+</LinearLayout>

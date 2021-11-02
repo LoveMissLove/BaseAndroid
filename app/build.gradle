@@ -1,0 +1,107 @@
+import java.security.InvalidKeyException
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    useLibrary 'org.apache.http.legacy'
+    signingConfigs {
+        debug {
+            storeFile file(appSignFileName)
+            storePassword appSignPassWord
+            keyAlias appSignAilas
+            keyPassword appSignAilasPassWord
+            try {
+                storeFile file(rootProject.ext.appSignFileName)
+                storePassword rootProject.ext.appSignPassWord
+                keyAlias rootProject.ext.appSignAilas
+                keyPassword rootProject.ext.appSignAilasPassWord
+            }
+            catch (ignored) {
+                throw new InvalidKeyException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+        }
+        release {
+            storeFile file(appSignFileName)
+            storePassword appSignPassWord
+            keyAlias appSignAilas
+            keyPassword appSignAilasPassWord
+            try {
+                storeFile file(rootProject.ext.appSignFileName)
+                storePassword rootProject.ext.appSignPassWord
+                keyAlias rootProject.ext.appSignAilas
+                keyPassword rootProject.ext.appSignAilasPassWord
+            }
+            catch (ignored) {
+                throw new InvalidKeyException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "String","appName","\"${rootProject.ext.appName}\""//app应用名称，BuildConfig.appName获取
+            resValue "string","app_name","\"${rootProject.ext.appName}\""//app应用名称，@string/app_name获取
+            resValue "string","app_package","\"${rootProject.ext.applicationId}\""//app包名，@string/app_package获取
+
+            minifyEnabled true////是否混淆
+            shrinkResources true//移除无用的资源文件
+            zipAlignEnabled true//优化zipAlign
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    // 输出apk名称
+                    def fileName = "${rootProject.ext.apkName}.apk"
+                    outputFileName = fileName
+                }
+            }
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String","appName","\"${rootProject.ext.appName}\""//app应用名称，BuildConfig.appName获取
+            resValue "string","app_name","\"${rootProject.ext.appName}\""//app应用名称，@string/app_name获取
+            resValue "string","app_package","\"${rootProject.ext.applicationId}\""//app包名，@string/app_package获取
+
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    // 输出apk名称
+                    def fileName = "${rootProject.ext.apkName}.apk"
+                    outputFileName = fileName
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api project(':ltbase')
+    api project(':ltpay')
+}

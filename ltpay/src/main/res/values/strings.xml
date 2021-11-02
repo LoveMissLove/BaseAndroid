@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ltPay</string>
+
+    <string name="pay_success">支付成功</string>
+    <string name="none_ali">未检测到支付宝</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="pay_cancle">支付被取消</string>
+    <string name="pay_waiting">支付结果确认中</string>
+    <string name="wrong_money">请输入正确的金额</string>
+    <string name="alipay">支付宝支付</string>
+</resources>

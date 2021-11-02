@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--四个角圆角的程度，只适用于矩形shape，默认是矩形shape-->
+    <corners android:radius="8dp"/>
+    <!--填充颜色-->
+    <solid android:color="@color/base_black"/>
+    <!--&lt;!&ndash;描边&ndash;&gt;-->
+    <!--<stroke android:width="1px" android:color="@android:color/darker_gray"/>-->
+
+</shape>
