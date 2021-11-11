@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import com.example.ltbase.base_activity.BaseActivity;
 import com.example.ltbase.base_bean.Response;
 import com.example.ltbase.base_callback.OnLoadingLayoutRetryListener;
-import com.example.ltbase.base_callback.OnRxViewClickListener;
 import com.example.ltbase.base_http.HttpUrl;
 import com.example.ltbase.base_http.LoadingObserver;
 import com.example.ltbase.base_utils.RxViewUtils;
@@ -27,19 +26,20 @@ import io.reactivex.rxjava3.core.Observable;
  * 邮箱：845040970@qq.com
  * 描述：多状态布局
  */
-public class LoadingStateLayoutActivity extends BaseActivity implements OnRxViewClickListener {
+public class LoadingStateLayoutActivity extends BaseActivity {
     private Button btnLoading,btnEmpty,btnError,btnHttp,btnInternet,btnReset;
     private LoadingLayout loadingLayout;
     private LinearLayout SHOW_ALL;
     private TextView tvContent;
     private String url= HttpUrl.APP_VERSION;
+
     @Override
-    protected int setLayoutId() {
+    protected int getLayoutId() {
         return R.layout.activity_loading_state_layout;
     }
+
     @Override
     protected void initView() {
-        super.initView();
         btnLoading= F(R.id.btnLoading);
         btnEmpty= F(R.id.btnEmpty);
         btnError= F(R.id.btnError);
@@ -49,6 +49,11 @@ public class LoadingStateLayoutActivity extends BaseActivity implements OnRxView
         SHOW_ALL= F(R.id.SHOW_ALL);
         tvContent= F(R.id.tvContent);
         loadingLayout=LoadingLayout.wrap(SHOW_ALL);
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override

@@ -12,8 +12,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.example.ltbase.base_dialog.AlertDialogUtil;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -291,30 +289,6 @@ public class NetUtil {
         }
         return false;
     }
-
-
-    /**
-     * 描述：如果没有网络，则弹出网络设置对话框
-     * @param activity 上下文
-     */
-    public static void checkNetwork(final Activity activity) {
-        if (!NetUtil.isNetworkAvailable(activity)) {
-            AlertDialogUtil alertDialogUtil=new AlertDialogUtil();
-            alertDialogUtil.showAlertDialog(activity,"网络状态提示","当前没有可以使用的网络，请设置网络！", "取消", "确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            }, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // 跳转到设置界面
-                    activity.startActivityForResult(new Intent(Settings.ACTION_WIRELESS_SETTINGS), 0);
-                }
-            });
-        }
-    }
-
     /**
      * 描述：在连接到网络基础之上,判断设备是否是SIM网络连接
      * @param context 上下文

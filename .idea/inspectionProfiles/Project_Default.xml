@@ -90,7 +90,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="方法说明:判断WIFI网络是否可用,方法名称:isWifiConnected,返回值:boolean,date,param" />
+      <option name="myAdditionalJavadocTags" value="方法说明:判断WIFI网络是否可用,方法名称:isWifiConnected,返回值:boolean,date,param,desc:,date:,author:" />
     </inspection_tool>
     <inspection_tool class="MapOrSetKeyShouldOverrideHashCodeEquals" enabled="false" level="CRITICAL" enabled_by_default="false" />
   </profile>

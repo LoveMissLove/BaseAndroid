@@ -44,14 +44,14 @@ public class TransfereeImageUtils {
     protected static final int READ_EXTERNAL_STORAGE = 100;
     protected static final int WRITE_EXTERNAL_STORAGE = 101;
     public TransfereeImageUtils(Context context, Transferee transferee, TransferConfig config) {
-        mContext=context;
+        mContext=context.getApplicationContext();
         this.transferee=transferee;
         this.config=config;
     }
     public void bindImageView(ImageView imageView,String imgUrl,int index){
         config = TransferConfig.build()
-                .setMissPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载前的占位图
-                .setErrorPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载错误后的占位图
+                .setMissPlaceHolder(R.mipmap.ic_launcher) // 资源加载前的占位图
+                .setErrorPlaceHolder(R.mipmap.ic_launcher) // 资源加载错误后的占位图
                 .setProgressIndicator(new ProgressPieIndicator()) // 资源加载进度指示器, 可以实现 IProgressIndicator 扩展
                 .setIndexIndicator(new NumberIndexIndicator()) // 资源数量索引指示器，可以实现 IIndexIndicator 扩展
                 .setImageLoader(new GlideImageLoader(mContext) ) // 图片加载器，可以实现 ImageLoader 扩展
@@ -77,8 +77,8 @@ public class TransfereeImageUtils {
     public void bindListView(ListView listView, List<String> imgUrl,int index,int imgId){
         config = TransferConfig.build()
                 .setSourceUrlList(imgUrl) // 资源 uri 集合， Uri 格式
-                .setMissPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载前的占位图
-                .setErrorPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载错误后的占位图
+                .setMissPlaceHolder(R.mipmap.ic_launcher) // 资源加载前的占位图
+                .setErrorPlaceHolder(R.mipmap.ic_launcher) // 资源加载错误后的占位图
                 .setProgressIndicator(new ProgressPieIndicator()) // 资源加载进度指示器, 可以实现 IProgressIndicator 扩展
                 .setIndexIndicator(new NumberIndexIndicator()) // 资源数量索引指示器，可以实现 IIndexIndicator 扩展
                 .setImageLoader(new GlideImageLoader(mContext) ) // 图片加载器，可以实现 ImageLoader 扩展
@@ -107,8 +107,8 @@ public class TransfereeImageUtils {
     public void bindRecyclerView(RecyclerView recyclerView, List<String> imgUrl, int index, int imgId){
         config = TransferConfig.build()
                 .setSourceUrlList(imgUrl) // 资源 uri 集合， Uri 格式
-                .setMissPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载前的占位图
-                .setErrorPlaceHolder(R.mipmap.ic_empty_photo) // 资源加载错误后的占位图
+                .setMissPlaceHolder(R.mipmap.ic_launcher) // 资源加载前的占位图
+                .setErrorPlaceHolder(R.mipmap.ic_launcher) // 资源加载错误后的占位图
                 .setProgressIndicator(new ProgressPieIndicator()) // 资源加载进度指示器, 可以实现 IProgressIndicator 扩展
                 .setIndexIndicator(new NumberIndexIndicator()) // 资源数量索引指示器，可以实现 IIndexIndicator 扩展
                 .setImageLoader(new GlideImageLoader(mContext) ) // 图片加载器，可以实现 ImageLoader 扩展

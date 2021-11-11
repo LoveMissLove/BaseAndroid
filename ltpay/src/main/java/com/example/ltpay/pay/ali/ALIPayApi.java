@@ -93,6 +93,8 @@ public class ALIPayApi {
                     activity.finish();
                 }
             }
+            config=null;
+            activity=null;
         };
     };
 }

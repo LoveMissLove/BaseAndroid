@@ -25,7 +25,7 @@ public class WXEntryApi {
     private final WXEntryHandler handler;
 
     private WXEntryApi(Context mContext) {
-        api = WXAPIFactory.createWXAPI(mContext, WXClient.getWxAppId(), true);
+        api = WXAPIFactory.createWXAPI(mContext.getApplicationContext(), WXClient.getWxAppId(), true);
         api.registerApp(WXClient.getWxAppId());
         handler = new WXEntryHandler();
     }
@@ -81,6 +81,7 @@ public class WXEntryApi {
             if (activity != null && config.getAutoFinish()) {
                 activity.finish();
             }
+            config=null;
             activity=null;
         }
     }

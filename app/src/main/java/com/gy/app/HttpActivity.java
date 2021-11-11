@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import com.example.ltbase.base_activity.BaseActivity;
 import com.example.ltbase.base_bean.Response;
 import com.example.ltbase.base_callback.OnDownloadListener;
-import com.example.ltbase.base_callback.OnRxViewClickListener;
 import com.example.ltbase.base_http.HttpUrl;
 import com.example.ltbase.base_http.LoadingObserver;
 import com.example.ltbase.base_utils.HProgressDialogUtils;
@@ -28,22 +27,27 @@ import io.reactivex.rxjava3.core.Observable;
  * 邮箱：845040970@qq.com
  * 描述：网络请求
  */
-public class HttpActivity extends BaseActivity implements OnRxViewClickListener {
+public class HttpActivity extends BaseActivity  {
     private Button btnGet,btnPost,btnDownLoad,btnDownLoadListener,btnUpLoad,btnUpLoadListener;
+
     @Override
-    protected int setLayoutId() {
+    protected int getLayoutId() {
         return R.layout.activity_http;
     }
 
     @Override
     protected void initView() {
-        super.initView();
         btnGet= F(R.id.btnGet);
         btnPost= F(R.id.btnPost);
         btnDownLoad= F(R.id.btnDownLoad);
         btnDownLoadListener= F(R.id.btnDownLoadListener);
         btnUpLoad= F(R.id.btnUpLoad);
         btnUpLoadListener= F(R.id.btnUpLoadListener);
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override

@@ -4,12 +4,12 @@ package com.example.ltpay.pay.ali;
  * 调用支付的必要条件
  **/
 public class ALIPayConfig {
-    private ALIPayCallBack callBack = null;
-    private String mOrderInfo = null;
-    private Boolean isAutoFinish = false;
-    private Boolean isAliSandbox = false;
-    private Boolean isALIDialog = false;
-    private String ALI_APP_RES2 = null;
+    private ALIPayCallBack callBack;
+    private String mOrderInfo;
+    private Boolean isAutoFinish;
+    private Boolean isAliSandbox;
+    private Boolean isALIDialog;
+    private String ALI_APP_RES2;
 
     private ALIPayConfig(Builder builder) {
         this.mOrderInfo = builder.orderInfo;
@@ -64,7 +64,7 @@ public class ALIPayConfig {
             return this;
         }
 
-        //是否启用沙箱环境,如果你的targetSdkVersion 30请修改清单文件内的支付宝可见性包名
+        //是否启用沙箱环境,如果你的targetSdkVersion =30请修改清单文件内的支付宝可见性包名
         public Builder setIsAliSandbox(Boolean isAliSandbox) {
             this.isAliSandbox = isAliSandbox;
             return this;

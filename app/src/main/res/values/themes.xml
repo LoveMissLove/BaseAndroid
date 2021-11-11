@@ -14,5 +14,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- 默认按钮样式 -->
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:paddingStart">@dimen/dp_20</item>
+        <item name="android:paddingEnd">@dimen/dp_20</item>
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/white90</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/button_circle_selector</item>
+        <item name="android:foreground">@null</item>
+    </style>
 
 </resources>

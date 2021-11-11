@@ -8,7 +8,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
-            android:background="@drawable/wj_btn_dialog_background"
+            android:background="@drawable/select_time_bg"
             android:padding="@dimen/dp_10">
 
             <TextView

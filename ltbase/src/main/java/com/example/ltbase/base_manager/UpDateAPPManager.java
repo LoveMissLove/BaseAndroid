@@ -7,8 +7,9 @@ import androidx.annotation.NonNull;
 
 import com.example.ltbase.base_bean.CustomResult;
 import com.example.ltbase.base_callback.OnUpDateAppCallBack;
-import com.example.ltbase.base_dialog.InfoDialog;
+import com.example.ltbase.base_dialog.BaseDialog;
 import com.example.ltbase.base_dialog.QMUITipDialogUtil;
+import com.example.ltbase.base_dialog.UpDateAppMessageDialog;
 import com.example.ltbase.base_utils.APKVersionCodeUtils;
 import com.example.ltbase.base_utils.HProgressDialogUtils;
 import com.example.ltbase.base_utils.LogUtils;
@@ -117,20 +118,25 @@ public class UpDateAPPManager {
      */
     private  void showUpdatePrompt(final @NonNull UpdateEntity updateEntity, final @NonNull IUpdateProxy updateProxy,Context context) {
         String updateInfo = UpdateUtils.getDisplayUpdateInfo(context, updateEntity);
-        InfoDialog mInfoDialog=new InfoDialog((Activity) context);
-        if(updateEntity.isForce()){
-            mInfoDialog.setCancelable(false);
-            mInfoDialog.setCanceledOnTouchOutside(false);
-            mInfoDialog.showDialog(String.format("软件已更新到%s版本，"+"\n"+"请下载应用？",updateEntity.getVersionName()),"","","立即下载");
+        UpDateAppMessageDialog.Builder upDateAppMessageDialog=new UpDateAppMessageDialog.Builder(context);
+        if(updateEntity.isForce()){//是否强制更新
+            upDateAppMessageDialog.setCancelable(false);
+            upDateAppMessageDialog.setCanceledOnTouchOutside(false);
+            upDateAppMessageDialog.setConfirm("立即下载");
+            upDateAppMessageDialog.setCancel(null);
+            upDateAppMessageDialog.setMessage(String.format("软件已更新到%s版本，"+"\n"+"请下载应用？",updateEntity.getVersionName()));
+            upDateAppMessageDialog.show();
         }else{
-            mInfoDialog.setCancelable(true);
-            mInfoDialog.setCanceledOnTouchOutside(true);
-            mInfoDialog.showDialog(String.format("软件已更新到%s版本，"+"\n"+"是否下载应用？",updateEntity.getVersionName()),"取消","立即下载");
+            upDateAppMessageDialog.setCancelable(true);
+            upDateAppMessageDialog.setCanceledOnTouchOutside(true);
+            upDateAppMessageDialog.setConfirm("立即下载");
+            upDateAppMessageDialog.setCancel("取消");
+            upDateAppMessageDialog.setMessage(String.format("软件已更新到%s版本，"+"\n"+"是否下载应用？",updateEntity.getVersionName()));
+            upDateAppMessageDialog.show();
         }
-
-        mInfoDialog.setClickConfirmCallBack(new InfoDialog.ClickConfirmCallBack() {
+        upDateAppMessageDialog.setListener(new UpDateAppMessageDialog.OnListener() {
             @Override
-            public void confirm() {
+            public void onConfirm(BaseDialog dialog) {
                 updateProxy.startDownload(updateEntity, new OnFileDownloadListener() {
                     @Override
                     public void onStart() {
@@ -155,12 +161,7 @@ public class UpDateAPPManager {
                 });
             }
 
-            @Override
-            public void cancel() {
-
-            }
         });
-
     }
 
     public void setOnUpDateAppCallBack(OnUpDateAppCallBack onUpDateAppCallBack) {

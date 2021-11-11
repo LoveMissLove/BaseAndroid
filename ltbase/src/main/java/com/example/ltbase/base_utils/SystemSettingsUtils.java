@@ -14,7 +14,6 @@ import com.example.ltbase.BuildConfig;
  * 邮箱：845040970@qq.com
  * 描述：系统设置跳转
  */
-
 public class SystemSettingsUtils {
     String sdk = Build.VERSION.SDK; // SDK号
 

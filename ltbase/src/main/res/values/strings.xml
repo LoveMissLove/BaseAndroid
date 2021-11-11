@@ -6,4 +6,25 @@
     <string name="time_out_please_try_again_later">连接超时,请稍后再试</string>
     <string name="the_requested_scope_is_invalid">请求范围不符合要求</string>
     <string name="the_requested_address_is_abnormal">请求地址异常</string>
+
+    <string name="common_year">年</string>
+    <string name="common_month">月</string>
+    <string name="common_day">日</string>
+
+    <string name="common_hour">时</string>
+    <string name="common_minute">分</string>
+    <string name="common_second">秒</string>
+
+    <!--对话框按钮-->
+    <string name="common_confirm">确定</string>
+    <string name="common_cancel">取消</string>
+    <!-- 地区对话框 -->
+    <string name="address_title">请选择地区</string>
+    <string name="address_hint">请选择</string>
+
+    <!-- 日期对话框 -->
+    <string name="date_title">请选择日期</string>
+
+    <!-- 时间对话框 -->
+    <string name="time_title">请选择时间</string>
 </resources>

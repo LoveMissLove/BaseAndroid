@@ -1,15 +1,11 @@
 package com.gy.app;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import com.example.ltbase.base_activity.BaseActivity;
 import com.example.ltbase.base_activity.WebViewActivity;
@@ -17,16 +13,13 @@ import com.example.ltbase.base_bean.PermissionBean;
 import com.example.ltbase.base_callback.OnLoadingLayoutRetryListener;
 import com.example.ltbase.base_callback.OnPictureSelectorListener;
 import com.example.ltbase.base_callback.OnRequestEachPermissions;
-import com.example.ltbase.base_callback.OnRxViewClickListener;
 import com.example.ltbase.base_constant.PermissionConstant;
-import com.example.ltbase.base_dialog.AlertDialogUtil;
 import com.example.ltbase.base_manager.UpDateAPPManager;
 import com.example.ltbase.base_utils.GsonUtil;
 import com.example.ltbase.base_utils.LogUtils;
 import com.example.ltbase.base_utils.PermissionUtil;
 import com.example.ltbase.base_utils.PictureSelectorUtils;
 import com.example.ltbase.base_utils.RxViewUtils;
-import com.example.ltbase.base_utils.SystemSettingsUtils;
 import com.example.ltbase.base_utils.ToastUtils;
 import com.example.ltbase.base_view.PickerTime.TimeSelector;
 import com.example.ltpay.PayConstants;
@@ -47,16 +40,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryListener, OnRxViewClickListener {
+public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryListener {
+
 
     @Override
-    protected int setLayoutId() {
+    protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
     @Override
     protected void initView() {
-        super.initView();
         TextView tvTitle = F(R.id.tv_title);
         tvTitle.setText("我是标题");
         ImageView imgBack = F(R.id.iv_left);
@@ -83,6 +76,11 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
         RxViewUtils.showClick(btnTransfereeImg, this);
         RxViewUtils.showClick(btnPayMode, this);
         RxViewUtils.showClick(imgBack, view -> finish());
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override
@@ -152,12 +150,12 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
     }
 
     private void showPay1() {
-        ALIPayApi.getInstance(context).doALIPay(new ALIPayConfig.Builder()
+        ALIPayApi.getInstance(context).doALIPay( new ALIPayConfig.Builder()
                 .setPayInfo("")
                 .setALI_APP_RES2(PayConstants.ALI_APP_RES2)
                 .setIsAliSandbox(true)
                 .setIsALIDialog(true)
-                .setIsAutoFinish(true)
+                .setIsAutoFinish(false)
                 .setCallBack(new ALIPayCallBack() {
                     @Override
                     public void paySuccess() {
@@ -213,11 +211,6 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
             @Override
             public void onShouldShowRationale(List<PermissionBean> deniedPermission) {
                 ToastUtils.showToast("授权失败勾选了不在询问：" + GsonUtil.getGson().toJson(deniedPermission));
-                AlertDialogUtil alertDialogUtil = new AlertDialogUtil();
-                alertDialogUtil.showAlertDialog(context, "请跳转到系统设置页面", "取消", "确定", (dialog, which) -> dialog.dismiss(), (dialog, which) -> {
-                    SystemSettingsUtils systemSettingsUtils = new SystemSettingsUtils();
-                    systemSettingsUtils.showOpenSystemSettings(context);
-                });
             }
 
             @Override

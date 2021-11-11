@@ -16,7 +16,7 @@ public class ScreenUtil {
 	private static ScreenUtil instance;
 
 	private ScreenUtil(Context context) {
-		this.context = context;
+		this.context = context.getApplicationContext();
 		WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		manager.getDefaultDisplay().getMetrics(dm);

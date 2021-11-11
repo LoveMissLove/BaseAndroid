@@ -5,7 +5,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import com.example.ltbase.base_callback.OnRxViewClickListener;
 import com.example.ltbase.base_observer.ObserverRxViewClicks;
 import com.jakewharton.rxbinding2.view.RxView;
 import java.util.concurrent.TimeUnit;
@@ -25,8 +24,8 @@ public class RxViewUtils {
      * @param view   点击事件的view
      * @param onRxViewClickListener 回调事件
      */
-    public static void showClick(View view, OnRxViewClickListener onRxViewClickListener){
-        long SECONDS = 2;
+    public static void showClick(View view, View.OnClickListener onRxViewClickListener){
+        long SECONDS = 1;
         RxView.clicks(view).throttleFirst(SECONDS,TimeUnit.SECONDS).subscribe(new ObserverRxViewClicks<Object>() {
             @Override
             public void onNext(@NonNull Object o) {
@@ -43,7 +42,7 @@ public class RxViewUtils {
      * @param SECONDS  秒数
      * @param onRxViewClickListener 回调事件
      */
-    public static void showClick(View view,long SECONDS, OnRxViewClickListener onRxViewClickListener){
+    public static void showClick(View view,long SECONDS, View.OnClickListener onRxViewClickListener){
         RxView.clicks(view).throttleFirst(SECONDS,TimeUnit.SECONDS).subscribe(new ObserverRxViewClicks<Object>() {
             @Override
             public void onNext(@NonNull Object o) {

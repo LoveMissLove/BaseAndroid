@@ -131,7 +131,7 @@ public class QMUITipDialog extends Dialog {
         public QMUITipDialog create(boolean cancelable) {
             QMUITipDialog dialog = new QMUITipDialog(mContext);
             dialog.setCancelable(cancelable);
-            dialog.setContentView(R.layout.dialog_scusess);
+            dialog.setContentView(R.layout.ui_qmui_scusess_dialog);
             ViewGroup contentWrap = (ViewGroup) dialog.findViewById(R.id.contentWrap);
 
             if (mCurrentIconType == ICON_TYPE_LOADING) {
@@ -205,7 +205,7 @@ public class QMUITipDialog extends Dialog {
          */
         public QMUITipDialog create() {
             QMUITipDialog dialog = new QMUITipDialog(mContext);
-            dialog.setContentView(R.layout.dialog_scusess);
+            dialog.setContentView(R.layout.ui_qmui_scusess_dialog);
             ViewGroup contentWrap = (ViewGroup) dialog.findViewById(R.id.contentWrap);
             LayoutInflater.from(mContext).inflate(mContentLayoutId, contentWrap, true);
             return dialog;

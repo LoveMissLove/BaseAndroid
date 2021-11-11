@@ -1,6 +1,6 @@
 <resources>
 
-
+<!--时间选择dialog-->
     <declare-styleable name="PickerView">
         <attr name="isLoop" format="boolean" />
     </declare-styleable>

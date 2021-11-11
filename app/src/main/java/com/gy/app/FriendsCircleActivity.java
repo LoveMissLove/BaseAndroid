@@ -18,14 +18,14 @@ import java.util.List;
 public class FriendsCircleActivity extends BaseActivity {
     private List<FriendsCircleBean>mList=new ArrayList<>();
 
+
     @Override
-    protected int setLayoutId() {
+    protected int getLayoutId() {
         return R.layout.activity_recycler_view;
     }
 
     @Override
     protected void initView() {
-        super.initView();
         List<String> largeList = new ArrayList<>();
         largeList.add("https://ww4.sinaimg.cn/bmiddle/a716fd45ly1gf5nskmynvj20ku2q37wh.jpg");
         largeList.add("https://ww3.sinaimg.cn/bmiddle/a716fd45ly1gf5nskwbduj20ku2ao1kx.jpg");
@@ -45,6 +45,11 @@ public class FriendsCircleActivity extends BaseActivity {
         RecyclerView rvImages = findViewById(R.id.rv_images);
         rvImages.setLayoutManager(new LinearLayoutManager(this));
         rvImages.setAdapter(new FriendsCircleAdapter(R.layout.item_friends_circle,mList,this,transfereeImageUtils));
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
 }

@@ -25,7 +25,7 @@ public class WXPayApi {
     private final WXPayHandler handler;
 
     private WXPayApi(Context mContext) {
-        api = WXAPIFactory.createWXAPI(mContext, WXClient.getWxAppId(), true);
+        api = WXAPIFactory.createWXAPI(mContext.getApplicationContext(), WXClient.getWxAppId(), true);
         api.registerApp(WXClient.getWxAppId());
         handler = new WXPayHandler();
     }
@@ -85,6 +85,7 @@ public class WXPayApi {
             if (activity != null && config.getAutoFinish()) {
                 activity.finish();
             }
+            config=null;
             activity = null;
         }
     }

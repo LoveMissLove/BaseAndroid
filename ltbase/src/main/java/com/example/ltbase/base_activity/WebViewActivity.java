@@ -41,19 +41,20 @@ public class WebViewActivity extends BaseActivity{
     private boolean isAnimStart = false;
     private int currentProgress;
     private String mTitle="我是WebView";
-    @Override
-    protected int setLayoutId() {
-        return R.layout.activity_web;
-    }
     public static void intentActivity(Activity activity, String title, String url) {
         Intent intent = new Intent(activity, WebViewActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("url", url);
         activity.startActivity(intent);
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_web;
+    }
+
     @Override
     protected void initView() {
-        super.initView();
         llLeft= F(R.id.ll_left);
         tvTitle= F(R.id.tv_title);
         webView= F(R.id.web);
@@ -63,6 +64,12 @@ public class WebViewActivity extends BaseActivity{
         url =TextUtils.isEmpty(getIntent().getStringExtra("url"))?url:getIntent().getStringExtra("url");
         openWebViewPage();
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
     /**
      * 打开webView页面
      */

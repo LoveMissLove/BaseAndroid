@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.ltbase.BuildConfig;
 import com.example.ltbase.base_http.RxHttpManager;
+import com.example.ltbase.base_manager.ActivityManager;
 import com.example.ltbase.base_service.OKHttpUpdateHttpService;
 import com.example.ltbase.base_utils.LogUtils;
 import com.example.ltbase.base_utils.ToastUtils;
@@ -40,6 +41,8 @@ public class BaseApplication extends Application {
         //初始化版本更新
         showXUpdate();
         initX5Web();
+        // Activity 栈管理初始化
+        ActivityManager.getInstance().init(this);
     }
 
     private void showXUpdate() {

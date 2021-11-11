@@ -9,7 +9,7 @@
         android:layout_width="@dimen/dp_30"
         android:layout_height="@dimen/dp_30"
         android:layout_centerInParent="true"
-        android:indeterminateDrawable="@drawable/progress_loading_green" />
+        android:indeterminateDrawable="@drawable/loading__layout_img" />
 
     <TextView
         android:id="@+id/loading_text"

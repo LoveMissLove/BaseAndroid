@@ -2,43 +2,109 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
-    <Button
-        android:id="@+id/btnLoading"
-        android:layout_width="wrap_content"
+    android:orientation="vertical">
+    <include layout="@layout/toolbar_white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="加载中"
         />
-    <Button
-        android:id="@+id/btnSuccess"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="加载成功"
-        />
-    <Button
-        android:id="@+id/btnError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="加载失败"
-        />
-    <Button
-        android:id="@+id/btnE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="加载异常"
-        />
-    <Button
-        android:id="@+id/btnCustom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自定义TipDialog"
-        />
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="取消"
-        />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/dp_30"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLoading"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载中" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSuccess"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载成功" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnError"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载失败" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnE"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载异常" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCustom"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="自定义TipDialog" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnMessage"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出消息对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnMenu"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出底部菜单选择框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddress"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出地区选择框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDate"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出日期选择框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTime"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出时间选择框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCancel"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="取消" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

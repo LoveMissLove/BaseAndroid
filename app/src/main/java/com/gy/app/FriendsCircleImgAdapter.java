@@ -26,7 +26,7 @@ public class FriendsCircleImgAdapter extends BaseQuickAdapter<String,BaseViewHol
         ImageView imageView = baseViewHolder.getView(R.id.iv_thum);
         Glide.with(imageView)
                 .load(s)
-                .placeholder(R.mipmap.ic_empty_photo)
+                .placeholder(R.mipmap.ic_launcher)
                 .into(imageView);
     }
 }
