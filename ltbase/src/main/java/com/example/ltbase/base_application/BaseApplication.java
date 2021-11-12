@@ -6,6 +6,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.ltbase.BuildConfig;
+import com.example.ltbase.base_handler.CrashHandler;
 import com.example.ltbase.base_http.RxHttpManager;
 import com.example.ltbase.base_manager.ActivityManager;
 import com.example.ltbase.base_service.OKHttpUpdateHttpService;
@@ -43,6 +44,8 @@ public class BaseApplication extends Application {
         initX5Web();
         // Activity 栈管理初始化
         ActivityManager.getInstance().init(this);
+        // 本地异常捕捉
+        CrashHandler.register(this);
     }
 
     private void showXUpdate() {

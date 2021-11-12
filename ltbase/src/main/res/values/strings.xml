@@ -27,4 +27,6 @@
 
     <!-- 时间对话框 -->
     <string name="time_title">请选择时间</string>
+
+    <string name="common_code_send">发送验证码</string>
 </resources>

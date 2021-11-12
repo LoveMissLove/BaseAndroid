@@ -12,12 +12,13 @@ import com.example.ltbase.base_activity.BaseActivity;
 import com.example.ltbase.base_bean.Response;
 import com.example.ltbase.base_callback.OnLoadingLayoutRetryListener;
 import com.example.ltbase.base_http.HttpUrl;
-import com.example.ltbase.base_http.LoadingObserver;
 import com.example.ltbase.base_utils.RxViewUtils;
 import com.example.ltbase.base_utils.ToastUtils;
-import com.example.ltbase.base_view.LoadingLayout;
+import com.example.ltbase.base_widget.layout.LoadingLayout;
 import com.gy.app.bean.AppVersionBean;
 import com.google.gson.Gson;
+import com.gy.app.http.HttpService;
+import com.gy.app.http.LoadingObserver;
 
 import io.reactivex.rxjava3.core.Observable;
 

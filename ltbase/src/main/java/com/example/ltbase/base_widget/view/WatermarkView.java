@@ -1,4 +1,4 @@
-package com.example.ltbase.base_view.Watermark;
+package com.example.ltbase.base_widget.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +21,12 @@ import java.util.List;
 
 /**
  * 水印
+ * 可以自定义水印文字颜色、大小和旋转角度
+ *         List<String> labels = new ArrayList<>();
+ *         labels.add(PreferUtils.getString("XM","")+"  "+PreferUtils.getString("JYBH",""));
+ *         labels.add(PreferUtils.getString("DMSM1", ""));
+ *         labels.add(DateUtils.getCurrentTime());
+ *         Watermark.getInstance().show(this, labels,-30,13);
  */
 public class WatermarkView {
 

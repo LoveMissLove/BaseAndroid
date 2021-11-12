@@ -1,4 +1,4 @@
-package com.example.ltbase.base_view;
+package com.example.ltbase.base_widget.layout;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,14 +11,12 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 
 import com.example.ltbase.R;
 import com.example.ltbase.base_application.BaseApplication;
-import com.example.ltbase.base_utils.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;

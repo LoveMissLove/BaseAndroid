@@ -24,7 +24,10 @@
         <entry key="ltbase/src/main/res/drawable/btn_login_normal.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/btn_login_press.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/close_icon.xml" value="0.40520833333333334" />
+        <entry key="ltbase/src/main/res/drawable/countdown_color_selector.xml" value="0.40520833333333334" />
+        <entry key="ltbase/src/main/res/drawable/countdown_selector.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/ic_launcher_background.xml" value="0.40520833333333334" />
+        <entry key="ltbase/src/main/res/drawable/info_ic.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/iv1_selected.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/iv2_selected.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/iv3_selected.xml" value="0.40520833333333334" />
@@ -33,6 +36,7 @@
         <entry key="ltbase/src/main/res/drawable/progress_loading.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/progress_loading_green.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/qmui_tip_diaog_bg.xml" value="0.40520833333333334" />
+        <entry key="ltbase/src/main/res/drawable/reboot_ic.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/selector_bg_gray.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/selector_button_oval_stroke_gray.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/shape_button_drawable.xml" value="0.40520833333333334" />
@@ -41,6 +45,7 @@
         <entry key="ltbase/src/main/res/drawable/shape_verify_btn_normal.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/shape_verify_btn_press.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/shape_white_normal.xml" value="0.40520833333333334" />
+        <entry key="ltbase/src/main/res/drawable/share_ic.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/solid_bottom.xml" value="0.40520833333333334" />
         <entry key="ltbase/src/main/res/drawable/transparent_selector.xml" value="0.4197916666666667" />
         <entry key="ltbase/src/main/res/drawable/wj_btn_dialog_background.xml" value="0.40520833333333334" />
@@ -52,6 +57,7 @@
         <entry key="ltbase/src/main/res/layout/activity_main.xml" value="0.182370820668693" />
         <entry key="ltbase/src/main/res/layout/activity_web.xml" value="0.3890625" />
         <entry key="ltbase/src/main/res/layout/address_dialog.xml" value="0.3890625" />
+        <entry key="ltbase/src/main/res/layout/crash_activity.xml" value="0.3890625" />
         <entry key="ltbase/src/main/res/layout/date_dialog.xml" value="0.4036458333333333" />
         <entry key="ltbase/src/main/res/layout/dialog_loading.xml" value="0.3890625" />
         <entry key="ltbase/src/main/res/layout/dialog_menu.xml" value="0.4036458333333333" />

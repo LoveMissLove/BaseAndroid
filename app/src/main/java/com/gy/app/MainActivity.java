@@ -14,9 +14,10 @@ import com.example.ltbase.base_callback.OnLoadingLayoutRetryListener;
 import com.example.ltbase.base_callback.OnPictureSelectorListener;
 import com.example.ltbase.base_callback.OnRequestEachPermissions;
 import com.example.ltbase.base_constant.PermissionConstant;
+import com.example.ltbase.base_dialog.BaseDialog;
+import com.example.ltbase.base_dialog.MenuDialog;
 import com.example.ltbase.base_manager.UpDateAPPManager;
 import com.example.ltbase.base_utils.GsonUtil;
-import com.example.ltbase.base_utils.LogUtils;
 import com.example.ltbase.base_utils.PermissionUtil;
 import com.example.ltbase.base_utils.PictureSelectorUtils;
 import com.example.ltbase.base_utils.RxViewUtils;
@@ -33,9 +34,8 @@ import com.example.ltpay.pay.wx.WXPayApi;
 import com.example.ltpay.pay.wx.WXPayCallBack;
 import com.example.ltpay.pay.wx.WXPayConfig;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.qmuiteam.qmui.skin.QMUISkinManager;
-import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
         Button btnPayMode = F(R.id.btnPayMode);
         Button btnTime=F(R.id.btnTime);
         Button btnTransfereeImg = F(R.id.btnTransfereeImg);
+        Button btnCrash=F(R.id.btnCrash);
         RxViewUtils.showClick(btnTime,this);
         RxViewUtils.showClick(btnPhoto, this);
         RxViewUtils.showClick(btnHttp, this);
@@ -76,6 +77,7 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
         RxViewUtils.showClick(btnTransfereeImg, this);
         RxViewUtils.showClick(btnPayMode, this);
         RxViewUtils.showClick(imgBack, view -> finish());
+        setOnClickListener(btnCrash);
     }
 
     @Override
@@ -109,7 +111,7 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
                 startActivity(new Intent(this, HttpActivity.class));
                 break;
             case R.id.btnPermission:
-                showPermission(PermissionConstant.CALL_PHONE, PermissionConstant.CAMERA);
+                showPermission(PermissionConstant.CALL_PHONE);
                 break;
             case R.id.btnUpDateApp:
                 UpDateAPPManager upDateAPPManager = new UpDateAPPManager();
@@ -132,9 +134,7 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
                 startActivity(new Intent(context, FriendsCircleActivity.class));
                 break;
             case R.id.btnPayMode:
-                showSimpleBottomSheetList(
-                        true, true, false, "支付方式",
-                        3, true, false);
+                showPayDialog();
                 break;
             case R.id.btnTime:
                 TimeSelector timeSelector=new TimeSelector(context, new TimeSelector.ResultHandler() {
@@ -145,8 +145,46 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
                 },"2021-01-01 00:00","2021-12-30 00:00");
                 timeSelector.show();
                 break;
+            case R.id.btnCrash:
+                throw new NullPointerException("我主动崩溃啦！");
             default:
         }
+    }
+    /**
+     * @author: LT
+     * @date: 2021/11/12 14:06
+     * @desc: 支付方式
+     */
+    private void showPayDialog() {
+        List<String> data = new ArrayList<>();
+        data.add("支付宝");
+        data.add("微信");
+        data.add("微信登录");
+        // 底部选择框
+        new MenuDialog.Builder(this)
+                // 设置 null 表示不显示取消按钮
+                //.setCancel(getString(R.string.common_cancel))
+                // 设置点击按钮后不关闭对话框
+                //.setAutoDismiss(false)
+                .setList(data)
+                .setListener(new MenuDialog.OnListener<String>() {
+
+                    @Override
+                    public void onSelected(BaseDialog dialog, int position, String string) {
+                        if(position==0){
+                            showPay1();
+                        }else if(position==1){
+                            showPay();
+                        }else{
+                            showPay2();
+                        }
+                    }
+
+                    @Override
+                    public void onCancel(BaseDialog dialog) {
+                    }
+                })
+                .show();
     }
 
     private void showPay1() {
@@ -223,42 +261,7 @@ public class MainActivity extends BaseActivity implements OnLoadingLayoutRetryLi
                 ToastUtils.showToast("全部授权");
             }
         }, permissionsGroup);
-    }
-    // ================================ 生成不同类型的BottomSheet
-    private void showSimpleBottomSheetList(boolean gravityCenter,
-                                           boolean addCancelBtn,
-                                           boolean withIcon,
-                                           CharSequence title,
-                                           int itemCount,
-                                           boolean allowDragDismiss,
-                                           boolean withMark) {
-        QMUIBottomSheet.BottomListSheetBuilder builder = new QMUIBottomSheet.BottomListSheetBuilder(context);
-        builder.setGravityCenter(gravityCenter)//是否显示在中间
-                .setSkinManager(QMUISkinManager.defaultInstance(context))
-                .setTitle(title)//标题
-                .setAddCancelBtn(addCancelBtn)//是否显示取消按钮
-                .setAllowDrag(allowDragDismiss)
-                .setNeedRightMark(withMark)//设置要被选中的 Item 的下标
-                .setOnSheetItemClickListener(new QMUIBottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(QMUIBottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        LogUtils.e(tag);
-                        if(position==0){
-                            showPay1();
-                        }else if(position==1){
-                            showPay();
-                        }else{
-                            showPay2();
-                        }
-                    }
-                });
-        if(withMark){
-            builder.setCheckedIndex(40);
-        }
-        builder.addItem("支付宝支付");
-        builder.addItem("微信支付");
-        builder.addItem("微信登录");
-        builder.build().show();
+
+
     }
 }

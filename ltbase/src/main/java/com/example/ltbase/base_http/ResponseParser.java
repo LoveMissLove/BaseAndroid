@@ -63,7 +63,7 @@ public class ResponseParser<T> extends TypeParser<Response<T>> {
                 //TODO 请求成功code符合业务逻辑
                 return data;
             }else if (TextUtils.equals("401",data.getCode())) {
-                //TODO Token失效业务逻辑
+                //TODO Token失效业务逻辑，onError中可以获取
                 throw new RefreshTokenException(String.valueOf(data.getCode()), data.getMessage(), response);
             }else{
                 //TODO 直接将服务端的错误信息抛出，onError中可以获取

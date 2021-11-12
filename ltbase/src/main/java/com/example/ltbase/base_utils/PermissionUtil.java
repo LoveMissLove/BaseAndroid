@@ -1,7 +1,11 @@
 package com.example.ltbase.base_utils;
 
 import android.app.Activity;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.ltbase.base_bean.PermissionBean;
@@ -25,6 +29,19 @@ import io.reactivex.rxjava3.disposables.Disposable;
  */
 public class PermissionUtil {
     /**
+     * 判断是否拥有该权限
+     * */
+    public static boolean showIsPermissionsGranted(Activity activity,String permissionsGroup){
+        return !lacksPermission(activity, permissionsGroup);
+    }
+    /**
+     * 判断是否缺少权限
+     */
+    private static boolean lacksPermission(Context mContexts, String permission) {
+        return ContextCompat.checkSelfPermission(mContexts, permission) ==
+                PackageManager.PERMISSION_DENIED;
+    }
+    /**
      *  permissions 要请求的权限，可以是多个
      *  request例子:
      * 不支持返回权限名;
@@ -39,8 +56,6 @@ public class PermissionUtil {
         });
         disposable.dispose();
     }
-
-
     /**
      *  permissions 要请求的权限，可以是多个
      *  requestEach例子:
@@ -99,19 +114,5 @@ public class PermissionUtil {
         });
     }
 
-    /**
-     *  permissions 要请求的权限，可以是多个
-     *  requestEachCombined例子:
-     *  返回的权限名称:将多个权限名合并成一个
-     *  返回的权限结果:全部同意时值true,否则值为false
-     */
-    public void  showMoreRequestEachCombinedPermissions(Activity mActivity, OnRequestEachPermissions onRequestEachPermissions, String... permissionsGroup) {
-        RxPermissions rxPermissions = new RxPermissions((FragmentActivity) mActivity);
-        Disposable disposable=  rxPermissions.requestEachCombined(permissionsGroup)
-                .subscribe(permission -> {
-                    LogUtils.i("权限名称:"+permission.name+",申请结果:"+permission.granted);
-//                    onRequestEachPermissions.result(permission.name,permission.granted);
-                });
-        disposable.dispose();
-    }
+
 }

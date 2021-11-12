@@ -9,46 +9,40 @@
         <attr name="qmui_loading_view_size" format="dimension"/>
         <attr name="android:color"/>
     </declare-styleable>
-
-    <declare-styleable name="QualificationView">
-        <attr name="select_qualification">
-            <flag name = "one" value = "0" />
-            <flag name = "two" value = "1" />
-            <flag name = "three" value = "2" />
-            <flag name = "four" value = "3" />
-        </attr>
-    </declare-styleable>
-
     <attr name="QMUILoadingStyle" format="reference"/>
 
-    <declare-styleable name="AndRatingBar">
-        <!-- color of star -->
-        <attr name="starColor" format="color|reference" />
-
-        <!-- color of secondary star -->
-        <attr name="subStarColor" format="color|reference" />
-
-        <!-- color of background star -->
-        <attr name="bgColor" format="color|reference" />
-
-        <!-- drawable of star -->
-        <attr name="starDrawable" format="reference" />
-
-        <!-- drawable of background star -->
-        <attr name="bgDrawable" format="reference" />
-
-        <!-- if keep the origin color of star drawable -->
-        <attr name="keepOriginColor" format="boolean" />
-
-        <!-- the scale factor of ratingbar that can change the spacing of star -->
-        <attr name="scaleFactor" format="float" />
-
-        <!-- additional the spacing of the star -->
-        <attr name="starSpacing" format="dimension" />
-
-        <!-- right to left -->
-        <attr name="right2Left" format="boolean" />
+    <!-- 支持限定 Drawable 大小的 TextView -->
+    <declare-styleable name="DrawableTextView">
+        <!-- Drawable 宽度 -->
+        <attr name="drawableWidth" format="dimension" />
+        <!-- Drawable 高度 -->
+        <attr name="drawableHeight" format="dimension" />
     </declare-styleable>
 
-
+    <!-- 设置栏 -->
+    <declare-styleable name="SettingBar">
+        <!-- 左边 -->
+        <attr name="bar_leftText" format="string"/>
+        <attr name="bar_leftTextColor" format="color" />
+        <attr name="bar_leftTextSize" format="dimension" />
+        <attr name="bar_leftTextHint" format="string"/>
+        <attr name="bar_leftDrawable" format="reference" />
+        <attr name="bar_leftDrawablePadding" format="dimension" />
+        <attr name="bar_leftDrawableSize" format="dimension" />
+        <attr name="bar_leftDrawableTint" format="color" />
+        <!-- 右边 -->
+        <attr name="bar_rightText" format="string" />
+        <attr name="bar_rightTextColor" format="color" />
+        <attr name="bar_rightTextSize" format="dimension" />
+        <attr name="bar_rightTextHint" format="string"/>
+        <attr name="bar_rightDrawable" format="reference" />
+        <attr name="bar_rightDrawablePadding" format="dimension" />
+        <attr name="bar_rightDrawableSize" format="dimension" />
+        <attr name="bar_rightDrawableTint" format="color" />
+        <!-- 分割线 -->
+        <attr name="bar_lineVisible" format="boolean" />
+        <attr name="bar_lineDrawable" format="reference|color" />
+        <attr name="bar_lineSize" format="dimension" />
+        <attr name="bar_lineMargin" format="dimension" />
+    </declare-styleable>
 </resources>

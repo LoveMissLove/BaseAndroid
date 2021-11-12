@@ -48,6 +48,12 @@
             android:process=":dexopt" >
         </service>
         <activity android:name=".base_activity.WebViewActivity" />
+        <!-- 崩溃展示（必须在独立进程） -->
+        <activity
+            android:name=".base_activity.CrashActivity"
+            android:launchMode="singleTop"
+            android:process=":crash"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

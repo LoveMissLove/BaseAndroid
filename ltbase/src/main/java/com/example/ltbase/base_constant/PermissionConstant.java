@@ -43,4 +43,16 @@ public class PermissionConstant {
      * 网络请求权限
      */
     public static final String INTERNET=Manifest.permission.INTERNET;
+    /**
+     * 安装包权限
+     * */
+    public static final String REQUEST_INSTALL_PACKAGES=Manifest.permission.REQUEST_INSTALL_PACKAGES;
+    /**
+     * 悬浮窗权限
+     * */
+    public static final String SYSTEM_ALERT_WINDOW=Manifest.permission.SYSTEM_ALERT_WINDOW;
+    /**
+     * 录音权限
+     * */
+    public static final String RECORD_AUDIO=Manifest.permission.RECORD_AUDIO;
 }

@@ -1,4 +1,4 @@
-package com.example.ltbase.base_widget;
+package com.example.ltbase.base_widget.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

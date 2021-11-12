@@ -1,4 +1,4 @@
-package com.example.ltbase.base_http;
+package com.gy.app.http;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -8,9 +8,12 @@ import com.example.ltbase.R;
 import com.example.ltbase.base_application.BaseApplication;
 import com.example.ltbase.base_callback.OnLoadingLayoutRetryListener;
 import com.example.ltbase.base_dialog.QMUITipDialogUtil;
+import com.example.ltbase.base_http.ExceptionHelper;
+import com.example.ltbase.base_http.MyException;
+import com.example.ltbase.base_http.RefreshTokenException;
 import com.example.ltbase.base_utils.LogUtils;
 import com.example.ltbase.base_utils.ToastUtils;
-import com.example.ltbase.base_view.LoadingLayout;
+import com.example.ltbase.base_widget.layout.LoadingLayout;
 import com.google.gson.JsonSyntaxException;
 
 import java.net.ConnectException;

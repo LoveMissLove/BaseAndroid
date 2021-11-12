@@ -23,7 +23,7 @@ import com.example.ltbase.base_dialog.action.ClickAction;
 import com.example.ltbase.base_dialog.action.HandlerAction;
 import com.example.ltbase.base_dialog.action.KeyboardAction;
 import com.example.ltbase.base_utils.NetworkStateUtils;
-import com.example.ltbase.base_view.LoadingLayout;
+import com.example.ltbase.base_widget.layout.LoadingLayout;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hitomi.tilibrary.transfer.TransferConfig;
 import com.hitomi.tilibrary.transfer.Transferee;
